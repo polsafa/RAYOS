@@ -7,6 +7,8 @@ public class ReapiterControl : MonoBehaviour
     private LineRenderer liner;
 
     public float lineDistance;
+
+    private RaycastHit hitLine;
     // Use this for initialization
     void Start()
     {
@@ -16,8 +18,17 @@ public class ReapiterControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        liner.SetPosition(0, transform.position);
-        liner.SetPosition(1, transform.position + transform.forward * lineDistance);
+        if(Physics.Raycast(transform.position,transform.forward,out hitLine, lineDistance))
+        {
+            liner.SetPosition(0, transform.position);
+            liner.SetPosition(1, hitLine.point);
+        }
+        else
+        {
+            liner.SetPosition(0, transform.position);
+            liner.SetPosition(1, transform.position + transform.forward * lineDistance);
+        }
+    
 
     }
 }
