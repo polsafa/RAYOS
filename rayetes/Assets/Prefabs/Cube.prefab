@@ -22,8 +22,8 @@ GameObject:
   - component: {fileID: 33239959119300236}
   - component: {fileID: 23256681559457314}
   - component: {fileID: 65258776834412490}
-  - component: {fileID: 120498077068136646}
-  - component: {fileID: 114346652010863926}
+  - component: {fileID: 120762484908778304}
+  - component: {fileID: 114547057812903202}
   m_Layer: 10
   m_Name: Cube
   m_TagString: repeater
@@ -41,7 +41,6 @@ GameObject:
   - component: {fileID: 4243207454788382}
   - component: {fileID: 33416464080140434}
   - component: {fileID: 23219441381518914}
-  - component: {fileID: 136028577888968482}
   m_Layer: 10
   m_Name: Cylinder
   m_TagString: Untagged
@@ -172,7 +171,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114346652010863926
+--- !u!114 &114547057812903202
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -183,8 +182,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 021fec212f5c0584dbaa0fd00ed578dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lineDistance: 10
---- !u!120 &120498077068136646
+  lineDistance: 5
+--- !u!120 &120762484908778304
 LineRenderer:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -199,7 +198,7 @@ LineRenderer:
   m_ReflectionProbeUsage: 0
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 64698924eed69814ba6e67662d4cd316, type: 2}
+  - {fileID: 2100000, guid: 5e1d65fc81b8d9f4fa1a86bfcb53f320, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -224,7 +223,7 @@ LineRenderer:
   - {x: 0, y: 0, z: 1}
   m_Parameters:
     serializedVersion: 2
-    widthMultiplier: 0.8
+    widthMultiplier: 0.4
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -276,16 +275,3 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
---- !u!136 &136028577888968482
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1650808748648524}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
