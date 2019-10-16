@@ -18,11 +18,16 @@ public class gameControll : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+      
+        Debug.DrawRay(Camera.main.transform.position, hitpos.point, Color.red);
+        print(hitpos.point);
         if (Input.GetMouseButtonDown(0))
         {
-            rayinfo = Camera.main.ScreenPointToRay(Input.mousePosition);
+            rayinfo = Camera.main.ScreenPointToRay(Input.mousePosition );
+
             if (Physics.Raycast(rayinfo, out hitpos))
             {
+                
                 if (hitpos.collider.tag == "repeater")
                 {
                     currentrepeater = hitpos.collider.gameObject;
