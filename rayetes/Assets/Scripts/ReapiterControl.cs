@@ -13,13 +13,7 @@ public class ReapiterControl : MonoBehaviour
     private GameObject currentrepeater;
 
     public List<GameObject> objray;
-    // Use this for initialization
-    void Start()
-    {
-       
-    }
 
-    // Update is called once per frame
     void Update()
     {
         if (liner.enabled == true)
@@ -54,7 +48,27 @@ public class ReapiterControl : MonoBehaviour
                     blackHole.GetComponent<holeController>().exit.GetComponent<LineRenderer>().enabled = true;
 
                 }
-               
+                if (hitLine.collider.tag == "bifurcator")
+                {
+                    GameObject bifurcator;
+                    bifurcator = hitLine.collider.gameObject;
+                    bifurcator.GetComponent<BifurcatorControler>().currentrep = currentrepeater;
+                    bifurcator.GetComponent<BifurcatorControler>().bifur1.GetComponent<LineRenderer>().enabled = true;
+                    bifurcator.GetComponent<BifurcatorControler>().bifur2.GetComponent<LineRenderer>().enabled = true;
+                    bifurcator.GetComponent<BifurcatorControler>().bifur2.GetComponent<Renderer>().material = bifurcator.GetComponent<BifurcatorControler>().b;
+                    bifurcator.GetComponent<BifurcatorControler>().bifur1.GetComponent<Renderer>().material = bifurcator.GetComponent<BifurcatorControler>().b;
+
+                }
+                if (hitLine.collider.tag == "enchufe")
+                {
+                    GameObject enchufe;
+                    enchufe = hitLine.collider.gameObject;
+                    enchufe.GetComponent<Enchufecontroller>().currentrep = currentrepeater;
+                    enchufe.GetComponent<Enchufecontroller>().power = true;
+                    enchufe.GetComponent<Renderer>().material = enchufe.GetComponent<Enchufecontroller>().b;
+                    
+
+                }
 
                 liner.SetPosition(0, transform.position);
                 liner.SetPosition(1, hitLine.point);
