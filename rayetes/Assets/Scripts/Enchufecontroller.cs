@@ -25,6 +25,6 @@ public class Enchufecontroller : MonoBehaviour {
             this.GetComponent<Renderer>().material = a;
         }
 
-       
+        meta.GetComponent<Finish>().currentrep = this.currentrep;
     }
 }
