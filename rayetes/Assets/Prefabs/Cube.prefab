@@ -182,14 +182,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 021fec212f5c0584dbaa0fd00ed578dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  liner: {fileID: 120762484908778304}
   lineDistance: 5
+  objray: []
 --- !u!120 &120762484908778304
 LineRenderer:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1415667235019306}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
