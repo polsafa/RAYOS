@@ -38,14 +38,24 @@ public class ReapiterControl : MonoBehaviour
                         hitLine.collider.GetComponent<ReapiterControl>().activeray(gameObject);
                     }
                 }
-                else
+                if (hitLine.collider.tag == "obstacle")
                 {
-                    if(currentrepeater != null)
+                    if (currentrepeater != null)
                     {
                         currentrepeater.GetComponent<ReapiterControl>().desactiveray(gameObject);
                         currentrepeater = null;
                     }
                 }
+                if (hitLine.collider.tag == "hole")
+                {
+                    GameObject blackHole;
+                    blackHole = hitLine.collider.gameObject;
+                    blackHole.GetComponent<holeController>().currentrep = currentrepeater;
+                    blackHole.GetComponent<holeController>().exit.GetComponent<LineRenderer>().enabled = true;
+
+                }
+               
+
                 liner.SetPosition(0, transform.position);
                 liner.SetPosition(1, hitLine.point);
             }
