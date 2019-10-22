@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ReapiterControl : MonoBehaviour
 {
-    private LineRenderer liner;
+    public LineRenderer liner;
 
     public float lineDistance;
 
@@ -16,38 +16,51 @@ public class ReapiterControl : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        liner = GetComponent<LineRenderer>();
+       
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Physics.Raycast(transform.position,transform.forward,out hitLine, lineDistance))
+        if (liner.enabled == true)
         {
-            if(hitLine.collider.tag == "repeater" && currentrepeater != hitLine.collider.gameObject)
+            if (Physics.Raycast(transform.position, transform.forward, out hitLine, lineDistance))
             {
-                if(currentrepeater != null)
+                if (hitLine.collider.tag == "repeater")
+                {
+                    if (currentrepeater != hitLine.collider.gameObject)
+                    {
+                        if (currentrepeater != null)
+                        {
+                            currentrepeater.GetComponent<ReapiterControl>().desactiveray(gameObject);
+                        }
+                        currentrepeater = hitLine.collider.gameObject;
+                        hitLine.collider.GetComponent<ReapiterControl>().activeray(gameObject);
+                    }
+                }
+                else
+                {
+                    if(currentrepeater != null)
+                    {
+                        currentrepeater.GetComponent<ReapiterControl>().desactiveray(gameObject);
+                        currentrepeater = null;
+                    }
+                }
+                liner.SetPosition(0, transform.position);
+                liner.SetPosition(1, hitLine.point);
+            }
+            else
+            {
+                if (currentrepeater != null)
                 {
                     currentrepeater.GetComponent<ReapiterControl>().desactiveray(gameObject);
+                    currentrepeater = null;
                 }
-                currentrepeater = hitLine.collider.gameObject;
-                hitLine.collider.GetComponent<ReapiterControl>().activeray(gameObject);
+                liner.SetPosition(0, transform.position);
+                liner.SetPosition(1, transform.position + transform.forward * lineDistance);
             }
-            liner.SetPosition(0, transform.position);
-            liner.SetPosition(1, hitLine.point);
-        }
-        else
-        {
-            if(currentrepeater != null)
-            {
-                currentrepeater.GetComponent<ReapiterControl>().desactiveray(gameObject);
-                currentrepeater = null;
-            }
-            liner.SetPosition(0, transform.position);
-            liner.SetPosition(1, transform.position + transform.forward * lineDistance);
-        }
-    
 
+        }
     }
 
     public void activeray(GameObject rayobjects)
@@ -73,6 +86,7 @@ public class ReapiterControl : MonoBehaviour
                 if(currentrepeater != null)
                 {
                     currentrepeater.GetComponent<ReapiterControl>().desactiveray(gameObject);
+                    currentrepeater = null;
                 }
             }
         }
