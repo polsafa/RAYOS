@@ -19,7 +19,6 @@ public class gameControll : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
       
-        Debug.DrawRay(Camera.main.transform.position, hitpos.point, Color.red);
         print(hitpos.point);
         if (Input.GetMouseButtonDown(0))
         {
@@ -56,6 +55,16 @@ public class gameControll : MonoBehaviour {
                     newpos.y = 1;
                     currentrepeater.transform.position = newpos;
                 }
+                if (Input.GetKey(KeyCode.W))
+                {
+                    currentrepeater.GetComponent<ReapiterControl>().setdistance(1);
+                    print("w");
+                }
+                if (Input.GetKey(KeyCode.S))
+                {
+                    currentrepeater.GetComponent<ReapiterControl>().setdistance(-1);
+                    print("s");
+                }
             }
         }
         else if (Input.GetMouseButtonUp(0))
@@ -63,7 +72,7 @@ public class gameControll : MonoBehaviour {
             rayinfo = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(rayinfo, out hitpos))
             {
-                if(hitpos.collider.tag == "repeater" && currentrepeater != hitinfo.collider.gameObject)
+                if(hitpos.collider.tag == "repeater" && currentrepeater != hitpos.collider.gameObject)
                 {
                     if(currentrepeater != null)
                     {
