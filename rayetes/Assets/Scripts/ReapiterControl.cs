@@ -118,7 +118,7 @@ public class ReapiterControl : MonoBehaviour
 
     public void setdistance(float value)
     {
-        print("hola");
+     
         lineDistance += value;
         if(lineDistance > 20)
         {
